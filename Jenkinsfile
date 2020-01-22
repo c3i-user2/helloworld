@@ -31,7 +31,7 @@ stage('DeployToStaging') {
                                     sshTransfer(
                                         sourceFiles: 'target/*.jar',
                                         removePrefix: 'target',
-                                        remoteDirectory: '/home/user1/swjar/',
+                                        remoteDirectory: '/home/user2/swjar/',
                                         execCommand: 'echo hello'
                                     )
                                 ]
