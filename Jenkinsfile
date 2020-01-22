@@ -44,5 +44,37 @@ stage('DeployToStaging') {
 
 
 
+ stage('Build Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    app = docker.build("sw3:5000/hello-test")
+                    app.inside {
+                        sh 'echo $(curl localhost:9282)'
+                     }
+                }
+            }
+        }
+
+ stage('Push Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    docker.withRegistry('http://sw3:5000', 'pvt-docker') {
+                    app.push()
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
 }
 }
