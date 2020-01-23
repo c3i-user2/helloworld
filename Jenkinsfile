@@ -51,9 +51,6 @@ stage('DeployToStaging') {
             steps {
                 script {
                     app = docker.build("sw3:5000/hello-test")
-                    app.inside {
-                        sh 'echo $(curl localhost:9282)'
-                     }
                 }
             }
         }
