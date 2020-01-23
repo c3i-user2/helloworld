@@ -56,5 +56,31 @@ stage('DeployToStaging') {
         }
 
 
+
+stage('Push Docker Image') {
+            when {
+                branch 'master'
+            }
+            steps {
+                script {
+                    docker.withRegistry('http://sw3:5000', 'pvt-docker') {
+                    app.push()
+                    }
+                }
+            }
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
  }
 }
