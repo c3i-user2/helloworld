@@ -58,19 +58,6 @@ stage('DeployToStaging') {
             }
         }
 
-            
-	    }
-        }
-
-
-
-
-
-
-
-
-
-
 
  }
 }
