@@ -1,0 +1,40 @@
+kind: Service
+apiVersion: v1
+metadata:
+  name: hellotestuser1-service
+spec:
+  type: NodePort
+  selector:
+    app: hellotestuser1
+  ports:
+  - protocol: TCP
+    port: 9282
+    nodePort: 30282
+
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hellotestuser1
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hellotestuser1
+  template:
+    metadata:
+      name: hellotestuser1
+      labels:
+        app: hellotestuser1
+        role: rolling-update
+    spec:
+      containers:
+      - image: $DOCKER_IMAGE_NAME:latest
+        name: app
+        imagePullPolicy: Always
+      imagePullSecrets:
+      - name: registrypullsecret
+  strategy:
+    type: RollingUpdate
+ 
