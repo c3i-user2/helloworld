@@ -1,7 +1,17 @@
 pipeline {
     agent any
 
-    stages {
+    
+ environment {
+        //be sure to replace "willbla" with your own Docker Hub username
+        DOCKER_IMAGE_NAME = "sw3:5000/hello-test"
+    }
+
+
+
+
+
+stages {
         stage('Build') {
             steps {
                echo "hello"  
