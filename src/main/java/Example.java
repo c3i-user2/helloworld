@@ -9,7 +9,7 @@ public class Example {
 
     @RequestMapping("/")
     String home() {
-        return "Hello World - v22!";
+        return "Hello World - v23!";
     }
 
     public static void main(String[] args) throws Exception {
