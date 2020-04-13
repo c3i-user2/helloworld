@@ -26,7 +26,7 @@ stage('DeployToStaging') {
                 branch 'master'
             }
             steps {
-                withCredentials([usernamePassword(credentialsId: 'ssh-user3', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
+                withCredentials([usernamePassword(credentialsId: 'ssh-user2', usernameVariable: 'USERNAME', passwordVariable: 'USERPASS')]) {
                     sshPublisher(
                         failOnError: true,
                         continueOnError: false,
